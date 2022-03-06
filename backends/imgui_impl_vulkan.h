@@ -25,6 +25,7 @@
 // Read comments in imgui_impl_vulkan.h.
 
 #pragma once
+
 #include "imgui.h"      // IMGUI_IMPL_API
 
 // [Configuration] in order to use a custom Vulkan function loader:
@@ -43,7 +44,7 @@
 #if defined(IMGUI_IMPL_VULKAN_NO_PROTOTYPES) && !defined(VK_NO_PROTOTYPES)
 #define VK_NO_PROTOTYPES
 #endif
-#include <vulkan/vulkan.h>
+#include <glad/vulkan.h>
 
 // Initialization data, for ImGui_ImplVulkan_Init()
 // [Please zero-clear before use!]
@@ -149,7 +150,7 @@ struct ImGui_ImplVulkanH_Window
     ImGui_ImplVulkanH_Window()
     {
         memset(this, 0, sizeof(*this));
-        PresentMode = VK_PRESENT_MODE_MAX_ENUM_KHR;
+        PresentMode = VK_PRESENT_MODE_FIFO_RELAXED_KHR;
         ClearEnable = true;
     }
 };
